@@ -30,6 +30,10 @@
  * 
  native void Han_SetPlayerSlide(int client);
 
+ 插件默认按蹲下进行滑铲,速度必须高于配置最小速度(默认 : 100.0)
+ 使用API可以关闭此插件功能 sliding_enable 0 设置为 0 按蹲下不会滑铲
+ 但是可以在其他插件使用API进行滑铲逻辑制作
+
 
 
 
