@@ -27,6 +27,7 @@
     sliding_slidejumpforce 500.0 滑铲跳高度, 默认500.0 经测试是一个较为合适的值 
     sliding_slidemixspeed 100.0 允许触发滑铲的最小速度, 默认 100.0, 玩家最大速度默认是 250左右 100 相当于走路速度 
     sliding_firstpersonhideweapon 1 第一人称是否隐藏武器模型,默认1 隐藏, 根据上面区分第三人称和第一人称的原理 来决定 第一人称的时候隐藏滑铲模型手上的武器,防止穿帮,第三人称的时候不隐藏
+    sliding_slidesound vehicles/v8/skid_lowfriction.wav 滑铲音效填写空值则不播放
 
     
 
