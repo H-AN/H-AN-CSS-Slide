@@ -4,7 +4,13 @@
     轻松实现滑铲功能.
 
     使用此API需要骨骼动画模型支持, 需要第三人称外部动画插件API支持,感谢杰西制作的滑铲骨骼动画
-
+    
+    API功能
+    native void Han_SetPlayerSlide(client) 直接给予玩家滑铲
+    forward Han_SlideOnStart(client) 滑铲开始时广播
+    forward Han_SlideOnEnd(client) 滑铲结束时广播
+    native bool Han_IsSliding(client) 检查滑铲状态
+    
     API使用方法 
     1. 将编译好的smx文件放入插件文件夹
     2. 将API文件 HanSlideAPI.inc 放入 include 文件夹
