@@ -41,6 +41,7 @@ enum struct Config
     ConVar SlideJumpForce;
     ConVar SlideMixSpeed;
     ConVar FirstPersonHideWeapon;
+    ConVar SlideSound;
 }
 Config g_SlideConfig;
 
@@ -64,9 +65,19 @@ public void OnPluginStart()
     g_SlideConfig.SlideJumpForce = CreateConVar("sliding_slidejumpforce", "500.0", "滑铲跳增加力");
     g_SlideConfig.SlideMixSpeed = CreateConVar("sliding_slidemixspeed", "100.0", "触发滑铲的最小速度");
     g_SlideConfig.FirstPersonHideWeapon = CreateConVar("sliding_firstpersonhideweapon", "1", "第人称是否隐藏模型武器");
+    g_SlideConfig.SlideSound = CreateConVar("sliding_slidesound", "vehicles/v8/skid_lowfriction.wav", "滑铲音效");
 
     RegConsoleCmd("thirdperson", ThirdPerson, "第三人称");
     RegConsoleCmd("firstperson", FirstPerson, "第一人称");
+}
+public void OnMapStart()
+{
+    char path[PLATFORM_MAX_PATH];
+    GetConVarString(g_SlideConfig.SlideSound, path, sizeof(path));
+    if (path[0] != '\0')   
+    {
+        PrecacheSound(path, true);
+    }
 }
 
 public Action ThirdPerson(int client, int args)
@@ -164,6 +175,7 @@ public Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3
             return Plugin_Continue;
 
         Slide(client);
+        
     }
 
     return Plugin_Continue;
@@ -205,6 +217,15 @@ void Slide(int client)
     Call_StartForward(g_ForwardSlideOnStart);
     Call_PushCell(client);
     Call_Finish();
+
+    char path[PLATFORM_MAX_PATH];
+    GetConVarString(g_SlideConfig.SlideSound, path, sizeof(path));
+    if (path[0] != '\0')  
+    {
+        PrecacheSound(path, true);
+        EmitSoundToAll(path, client, SNDCHAN_WEAPON, SNDLEVEL_ROCKET);
+        EmitSoundToAll(path, client, SNDCHAN_STATIC, SNDLEVEL_NORMAL);
+    }
 
     ForcedDuck[client] = true;
     ClientCommand(client, "+duck");
