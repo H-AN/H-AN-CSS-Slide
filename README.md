@@ -26,15 +26,9 @@
     sliding_slidejump 1 是否开启滑铲跳 默认 1 开启, 滑铲跳是在滑铲途中按跳跃可以获得额外的跳跃高度与距离 在空中无法滑铲跳!
     sliding_slidejumpforce 500.0 滑铲跳高度, 默认500.0 经测试是一个较为合适的值 
     sliding_slidemixspeed 100.0 允许触发滑铲的最小速度, 默认 100.0, 玩家最大速度默认是 250左右 100 相当于走路速度 
-    sliding_firstpersonhideweapon 0 第一人称是否隐藏武器模型,默认0 不隐藏, 根据上面区分第三人称和第一人称的原理 来决定 第一人称的时候隐藏滑铲模型手上的武器,防止穿帮,第三人称的时候不隐藏
+    sliding_firstpersonhideweapon 1 第一人称是否隐藏武器模型,默认1 隐藏, 根据上面区分第三人称和第一人称的原理 来决定 第一人称的时候隐藏滑铲模型手上的武器,防止穿帮,第三人称的时候不隐藏
 
     
- API使用
- * 给予玩家滑铲
- *
- * @param client        玩家
- * 
- native void Han_SetPlayerSlide(int client);
 
  插件默认按蹲下进行滑铲,速度必须高于配置最小速度(默认 : 100.0)
  使用API可以关闭此插件功能 sliding_enable 0 设置为 0 按蹲下不会滑铲
