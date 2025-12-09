@@ -1,4 +1,9 @@
-   
+<div align="center">
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Z8Z31PY52N)
+  
+
+</div>   
     CS起源滑铲插件附加API
     
     轻松实现滑铲功能.
